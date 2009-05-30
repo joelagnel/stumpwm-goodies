@@ -1,0 +1,87 @@
+;; My key bindings
+;; switching window
+(in-package stumpwm);5B
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-Up") "pull-hidden-previous")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-Down") "pull-hidden-next")
+;; switching frames
+(define-key *top-map*  (kbd "M-Page_Down") "fnext")
+
+;; switching groups
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-Left") "gprev")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-Right") "gnext")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F1") "gselect 1")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F2") "gselect 2")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F3") "gselect 3")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F4") "gselect 4")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F5") "gselect 5")
+
+;; Load mode line config
+(load "/home/joel/repository/stumpwm-goodies/mode-line/modeline-config.lisp")
+(define-key stumpwm:*top-map* (stumpwm:kbd "F12") "mode-line")
+
+;; splits
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-s") "vsplit")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-S") "hsplit")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-q") "only")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-r") "remove")
+
+;; mouse
+(setf *mouse-focus-policy* :sloppy)
+
+;; border
+(setf *window-border-style* :thin)
+;(let ((scr (car stumpwm:*screen-list*))
+;(progn (setf (screen-unfocus-color scr)
+;;       (xlib:alloc-color (xlib:screen-default-colormap (screen-number scr)) "Dark Gray"))
+;(setf (screen-focus-color (car stumpwm:*screen-list*))
+;      (xlib:alloc-color (xlib:screen-default-colormap (screen-number scr)) "White")))
+
+;; programs
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-c") "exec xfce4-terminal")
+(define-key stumpwm:*top-map* (stumpwm:kbd "M-F") "exec firefox-2")
+
+;; wallpaper
+(defvar *background-image-path* "/home/joel/data/pics/pics celebs/Stunning shots/")
+(defun select-random-background-image ()
+  "Select a random image"
+  (let ((file-list (directory (concatenate 'string *background-image-path* "*.jpg")))
+        (*random-state* (make-random-state t)))
+    (namestring (nth (random (length file-list)) file-list))))
+(stumpwm:run-shell-command "display -window root '/home/joel/data/pics/pics celebs/Wallpapers/1024x728/TweetyDark.jpg'")
+
+;; XF86AudioPlay
+; Directly used by amarok
+(run-shell-command "xmodmap -e \'keycode 162 = XF86AudioPlay\'")
+(run-shell-command "xmodmap -e \'keycode 164 = XF86AudioStop\'")
+
+; Alsa mixer volume control (Fn + Up/Down)a
+
+(run-shell-command "xmodmap -e \'keycode 174 = XF86AudioLowerVolume\'")
+(run-shell-command "xmodmap -e \'keycode 176 = XF86AudioRaiseVolume\'")
+(define-key stumpwm:*top-map* (stumpwm:kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
+(define-key stumpwm:*top-map* (stumpwm:kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
+
+; Brightness Adjust (Fn + Up/Down)
+(run-shell-command "xmodmap -e \'keycode 212 = XF86LaunchE'")
+(run-shell-command "xmodmap -e \'keycode 101 = XF86LaunchD'")
+(define-key stumpwm:*top-map* (stumpwm:kbd "XF86LaunchE") "exec brightness +")
+(define-key stumpwm:*top-map* (stumpwm:kbd "XF86LaunchD") "exec brightness -")
+
+;; TODO: key mappings for rest
+
+;; TODO: Print screen
+
+;; Load swank.
+;(load "/home/joel/repository/lisp/el/modes/lisp/slime/swank-loader.lisp")
+
+
+(load "/home/joel/repository/slime/swank-loader.lisp")
+(swank-loader:init)
+(defcommand swank () ()
+
+  (setf stumpwm:*top-level-error-action* :break)
+  (swank:create-server :port 4005
+                       :style swank:*communication-style*
+                       :dont-close t)
+  (echo-string (current-screen) "Starting swank."))
+(define-key *root-map* (kbd "C-s") "swank") 
