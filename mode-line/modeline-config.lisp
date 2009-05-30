@@ -1,6 +1,6 @@
 (in-package :stumpwm)
 
-(load "/home/joel/repository/stumpwm-goodies/modeline-cpu.lisp")
+(load "/home/joel/repository/stumpwm-goodies/mode-line/modeline-cpu.lisp")
 ;(load (concat *stumpwm-load-path* "notifications.lisp"))
 
 (setf *mode-line-screen-position* :bottom)
