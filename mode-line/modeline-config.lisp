@@ -58,14 +58,10 @@
 ;; Set model-line format
 (setf *screen-mode-line-format*
       (list
-;;;        "| CPU: "
-       ;;       '(:eval (current-cpu-usage))
        '(:eval (show-hostname))
        "| Battery:"
        '(:eval (show-battery-charge))
        '(:eval (show-battery-state))
        "| IP " '(:eval (show-ip-address))
-       "| " '(:eval (run-shell-command "ruby -e \"print Time.now\"" t))))
-;;;        '(:eval (show-emacs-jabber-new-message))
-;;;        '(:eval (show-emacs-jabber-new-mail))
-;;; ))
+       "| " '(:eval (run-shell-command "ruby -e \"print Time.now\"" t))
+       "| %g"))

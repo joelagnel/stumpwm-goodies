@@ -1,8 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Joel Agnel Fernandes
 ;; initramd@gmail.com
+;;
 ;; Description: Multimedia key mappings for stumpwm
 ;; suggestions/patches welcomed
+;;
+;; Usage: Simply load this file and go
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (in-package :stumpwm)
