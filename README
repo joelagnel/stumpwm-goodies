@@ -10,6 +10,9 @@ As of now, the following goodies are available:
 . Multimedia Key support for stumpwm
   Now control your volume and playlist from Stump using keyboard.
 
+. Mode Line
+  A bunch of lisp extensions for mode-line (gives you battery, ip addr, date, cpu usage etc..)
+
 . Effects
   Simple theming for your stump (uses built in stumpwm functions)
 
