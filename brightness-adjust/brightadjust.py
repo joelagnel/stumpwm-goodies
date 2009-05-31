@@ -11,7 +11,7 @@
 ###########################################################################
 #
 # Joel Agnel Fernandes (agnel.joel@gmail.com)
-# Stolen from KDE's guidance power system, adapted (severely) for Stumpwm
+# Stolen from KDE's guidance power system, adapted (severely) for StumpWM
 # to change Brightness of Laptop Panel.
 #
 ###########################################################################
