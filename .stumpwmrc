@@ -41,6 +41,14 @@
 ;; Load Mode line
 (load "/home/joel/repository/stumpwm-goodies/mode-line/modeline-config.lisp")
 
+;; Modeline Group Scrolling
+(setf stumpwm:*mode-line-click-hook*
+      (list (lambda (&rest args)
+	      (cond ((eq (second args) 5)
+		     (run-commands "gnext"))
+		    ((eq (second args) 4)
+		     (run-commands "gprev"))))))
+
 ;; Theming
 (load "/home/joel/repository/stumpwm-goodies/effects.lisp")
 
