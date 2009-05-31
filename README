@@ -1,0 +1,17 @@
+This is a collection of stumpwm extensions by Isaac Praveen (icylisper@gmail.com) and Joel Fernandes (agnel.joel@gmail.com) 
+Hope you enjoy these, and please contribute :-)
+
+As of now, the following goodies are available:
+
+. Laptop Panel brightness
+  A python script that changes laptop panel brightness.
+  A few lines have to be added to .stumprc to map your brightness Fn key (mentioned in its README)
+
+. Multimedia Key support for stumpwm
+  Now control your volume and playlist from Stump using keyboard.
+
+. Effects
+  Simple theming for your stump (uses built in stumpwm functions)
+
+. My .stumprc
+  a good reference if you get stuck trying to get any of the extensions integrated into your environment.
