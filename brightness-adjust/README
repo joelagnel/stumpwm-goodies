@@ -1,7 +1,9 @@
 #################################################################################
 #
+# Isaac Praveen (icylisper@gmail.com)
 # Joel Agnel Fernandes (agnel.joel@gmail.com)
-# Adapted KDE's guidance power manager python module
+#
+# Description: Adapted KDE's guidance power manager python module
 # to change Brightness of Laptop Panel.
 #
 # Usage:
